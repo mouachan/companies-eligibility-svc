@@ -1,13 +1,13 @@
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_37362624-C39B-4336-AC88-58026EAA430D" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_0932E842-A6C4-412D-835C-B1DEB74C463B" name="eligibility-rules" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_37362624-C39B-4336-AC88-58026EAA430D">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_37362624-C39B-4336-AC88-58026EAA430D" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_0932E842-A6C4-412D-835C-B1DEB74C463B" name="eligibilityrules" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_37362624-C39B-4336-AC88-58026EAA430D">
   <dmn:extensionElements/>
-  <dmn:itemDefinition id="_2AAEAAEA-A509-4C28-9745-3D24C56A7962" name="loanValidation" isCollection="false">
+  <dmn:itemDefinition id="_2AAEAAEA-A509-4C28-9745-3D24C56A7962" name="loan" isCollection="false">
     <dmn:itemComponent id="_C5016437-4676-4CA3-813A-B4C698884543" name="siren" isCollection="false">
       <dmn:typeRef>Any</dmn:typeRef>
     </dmn:itemComponent>
     <dmn:itemComponent id="_BAAD2BB6-05E3-45A7-ABB1-55D387C0441C" name="age" isCollection="false">
       <dmn:typeRef>number</dmn:typeRef>
     </dmn:itemComponent>
-    <dmn:itemComponent id="_E5394079-45AE-440A-8B6C-3BA4F3F2B6EB" name="soutienPublic" isCollection="false">
+    <dmn:itemComponent id="_E5394079-45AE-440A-8B6C-3BA4F3F2B6EB" name="publicSupport" isCollection="false">
       <dmn:typeRef>boolean</dmn:typeRef>
     </dmn:itemComponent>
     <dmn:itemComponent id="_A09DAEF5-244B-427B-86F7-089F5ADB054C" name="typeProjet" isCollection="false">
@@ -19,52 +19,53 @@
     <dmn:itemComponent id="_9CC75C57-A10C-4460-B788-A31109B5CA29" name="ca" isCollection="false">
       <dmn:typeRef>number</dmn:typeRef>
     </dmn:itemComponent>
-  </dmn:itemDefinition>
-  <dmn:itemDefinition id="_1FB5A851-9816-4CE5-8487-32B49153CEE9" name="elligible" isCollection="false">
-    <dmn:itemComponent id="_00B26BE8-8EF6-4248-8850-6FBC705A8054" name="result" isCollection="false">
+    <dmn:itemComponent id="_BEBEE759-B670-465D-B5FD-2B4BD1D3C9C7" name="eligible" isCollection="false">
       <dmn:typeRef>boolean</dmn:typeRef>
     </dmn:itemComponent>
-    <dmn:itemComponent id="_6A667F6E-B82E-4716-B6A1-5C62E87E1C8C" name="msg" isCollection="false">
+    <dmn:itemComponent id="_86282B0F-05B0-4951-BCE9-91F0CCDAE846" name="amount" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_EACDAD0C-99B7-4725-A425-9D9C7C2DEC6B" name="msg" isCollection="false">
       <dmn:typeRef>string</dmn:typeRef>
     </dmn:itemComponent>
   </dmn:itemDefinition>
-  <dmn:inputData id="_ACCA4CEE-3E76-4F42-BD74-9D7FFCE41445" name="loanValidation">
+  <dmn:inputData id="_ACCA4CEE-3E76-4F42-BD74-9D7FFCE41445" name="loan">
     <dmn:extensionElements/>
-    <dmn:variable id="_9FAD8414-0531-4EA8-A103-117ECA92AC93" name="loanValidation"/>
+    <dmn:variable id="_9FAD8414-0531-4EA8-A103-117ECA92AC93" name="loan" typeRef="loan"/>
   </dmn:inputData>
-  <dmn:decision id="_1D8489A1-A185-44D8-8DB2-778528F25EFE" name="elligible">
+  <dmn:decision id="_1D8489A1-A185-44D8-8DB2-778528F25EFE" name="eligibility">
     <dmn:extensionElements/>
-    <dmn:variable id="_0CEAD1DA-57D2-4DE6-9890-75F7E0B034BC" name="elligible" typeRef="elligible"/>
+    <dmn:variable id="_0CEAD1DA-57D2-4DE6-9890-75F7E0B034BC" name="eligibility" typeRef="loan"/>
     <dmn:informationRequirement id="_098EEFCE-EDFE-4716-8027-5DD1C5350D5B">
       <dmn:requiredInput href="#_ACCA4CEE-3E76-4F42-BD74-9D7FFCE41445"/>
     </dmn:informationRequirement>
     <dmn:decisionTable id="_13D89616-8CDF-426A-B649-B03410301BC4" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
       <dmn:input id="_FB730052-56D1-476C-977A-64CADEE143E2">
         <dmn:inputExpression id="_4E481ADF-A5A4-4EC4-BEF1-41858F0014C8" typeRef="number">
-          <dmn:text>loanValidation.amount</dmn:text>
+          <dmn:text>loan.amount</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_FC4DBBAB-9D29-4622-854B-80B6BEC2222B">
         <dmn:inputExpression id="_B20FCC36-025D-4555-AE81-BB921A19C7E2" typeRef="string">
-          <dmn:text>loanValidation.typeProjet</dmn:text>
+          <dmn:text>loan.typeProjet</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_52F21985-25D5-4201-8073-DC27B18EF291">
         <dmn:inputExpression id="_05CCCC51-F625-4980-9C14-8B3F37AE5935" typeRef="boolean">
-          <dmn:text>loanValidation.publicSupport</dmn:text>
+          <dmn:text>loan.publicSupport</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_01C92254-ECF1-45D8-A675-89022A4DB30F">
         <dmn:inputExpression id="_D6926260-4A0D-4C78-993A-6068F60F0D86" typeRef="number">
-          <dmn:text>loanValidation.numbEmployees</dmn:text>
+          <dmn:text>loan.nbEmployees</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
       <dmn:input id="_1086FE07-50E2-40D2-A153-09C255390368">
         <dmn:inputExpression id="_27890A65-B98C-43C7-83D5-D048F2AF6386" typeRef="number">
-          <dmn:text>loanValidation.ca</dmn:text>
+          <dmn:text>loan.ca</dmn:text>
         </dmn:inputExpression>
       </dmn:input>
-      <dmn:output id="_30643FA1-B023-4C1C-A7CE-C88169A47B13" name="result" typeRef="boolean"/>
+      <dmn:output id="_30643FA1-B023-4C1C-A7CE-C88169A47B13" name="eligible" typeRef="boolean"/>
       <dmn:output id="_CAE82DBA-EFED-4672-83FF-CABF430EE224" name="msg" typeRef="string"/>
       <dmn:annotation name="annotation-1"/>
       <dmn:rule id="_C3B88BDF-866A-455F-9A63-84156254AF0A">
@@ -166,6 +167,32 @@
         </dmn:outputEntry>
         <dmn:outputEntry id="_165DE01B-2076-41B4-966D-E240096A6D9A">
           <dmn:text>"CA exceed 10M€"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_DEF75CDB-4235-4784-8CD5-9C7EC950A2A6">
+        <dmn:inputEntry id="_8D456692-D1E9-4E84-9F66-DB5DE3D91389">
+          <dmn:text>&lt;100000</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8704F762-F539-49FE-81A6-F8804C3C4334">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4595E068-D9A6-4809-BD40-77676EFCC170">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C02CC5DF-D167-4455-A45C-FE0E3E764FD3">
+          <dmn:text>&lt;50</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A5B6BD47-C762-432A-B844-6B748EA07342">
+          <dmn:text>&lt;10000000</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_63C38FCE-A14D-43D5-9D67-F6688A7B5FC3">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_58B031F4-4EF3-4899-8030-AE0667FE57FD">
+          <dmn:text>"Eligible"</dmn:text>
         </dmn:outputEntry>
         <dmn:annotationEntry>
           <dmn:text/>

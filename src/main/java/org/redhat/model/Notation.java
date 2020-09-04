@@ -1,4 +1,4 @@
-package org.redhat.eligibility;
+package org.redhat.model;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
